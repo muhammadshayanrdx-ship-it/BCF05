@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0b0d10">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
+<title>Shelf Barcode Finder</title>
+</head>
+<body>
+<main class="app">
+<header class="topbar"><div><h1>Shelf Barcode Finder</h1><p>Multi-barcode shelf scanner • iPhone + Android</p></div><span id="engineBadge" class="badge">Loading decoder…</span></header>
+<section class="controls">
+<label class="target"><span>Last 4 UPC digits</span><input id="target" inputmode="numeric" maxlength="4" pattern="[0-9]*" placeholder="e.g. 3464" autocomplete="off"></label>
+<div class="buttons"><button id="startBtn" class="primary">Start camera</button><button id="switchBtn">Switch camera</button><button id="torchBtn" hidden>Flashlight</button></div>
+</section>
+<section class="scanner"><video id="video" autoplay muted playsinline></video><canvas id="overlay"></canvas><div class="scan-hud"><span id="status">Ready</span><span id="count">0 found</span></div><div id="centerHint" class="center-hint">Point the rear camera at the shelf</div></section>
+<section class="match-panel"><div><strong id="matchState">Waiting for scan</strong><span id="matchValue">Enter the last 4 digits, then start the camera.</span></div><button id="clearBtn">Clear</button></section>
+<section class="results"><div class="section-title"><h2>Detected barcodes</h2><span id="resultCount">0</span></div><ul id="resultsList"></ul></section>
+<p class="privacy">No barcode data is uploaded. The decoder runs in the browser. Camera access requires HTTPS on GitHub Pages.</p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@zxing/browser@0.1.5/umd/zxing-browser.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
